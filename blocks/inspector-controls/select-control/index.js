@@ -14,23 +14,25 @@ import { withInstanceId } from '@wordpress/components';
 import BaseControl from './../base-control';
 import './style.scss';
 
-function SelectControl( { label, selected, instanceId, onBlur, options = [], ...props } ) {
+function SelectControl( { label, instanceId, onChange, options = [], ...props } ) {
 	const id = 'inspector-select-control-' + instanceId;
-	const onBlurValue = ( event ) => onBlur( event.target.value );
+	const onChangeValue = ( event ) => onChange( event.target.value );
 
+	// Disable reason: A select with an onchange throws a warning
+
+	/* eslint-disable jsx-a11y/no-onchange */
 	return ! isEmpty( options ) && (
 		<BaseControl label={ label } id={ id }>
 			<select
 				id={ id }
 				className="blocks-select-control__input"
-				onBlur={ onBlurValue }
+				onChange={ onChangeValue }
 				{ ...props }
 			>
 				{ options.map( ( option ) =>
 					<option
 						key={ option.value }
 						value={ option.value }
-						selected={ option.value === selected }
 					>
 						{ option.label }
 					</option>
@@ -38,6 +40,7 @@ function SelectControl( { label, selected, instanceId, onBlur, options = [], ...
 			</select>
 		</BaseControl>
 	);
+	/* eslint-enable jsx-a11y/no-onchange */
 }
 
 export default withInstanceId( SelectControl );
