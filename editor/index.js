@@ -122,9 +122,9 @@ export function createEditorInstance( id, post, settings ) {
 
 		// APIProvider
 		//
-		//  - context.getApiSchema
-		//  - context.getApiRoot
-		//  - context.getApiNonce
+		//  - context.getAPISchema
+		//  - context.getAPIPostTypeRestBaseMapping
+		//  - context.getAPITaxonomyRestBaseMapping
 		[
 			APIProvider,
 			{
