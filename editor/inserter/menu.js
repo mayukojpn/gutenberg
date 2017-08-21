@@ -302,7 +302,7 @@ export class InserterMenu extends Component {
 				disabled={ disabled }
 			>
 				<BlockIcon icon={ block.icon } />
-				{ block.title }
+				{ __( block.title ) }
 			</button>
 		);
 	}
@@ -359,7 +359,7 @@ export class InserterMenu extends Component {
 										id={ `editor-inserter__separator-${ category.slug }-${ instanceId }` }
 										aria-hidden="true"
 									>
-										{ category.title }
+										{ __( category.title ) }
 									</div>
 									<div
 										className="editor-inserter__category-blocks"
